@@ -1,4 +1,4 @@
-SqlToGraphitePlugin-HttpPing
+SqlToGraphitePlugin-PerfSentryWmi
 ============================
 
-Simple SqlToGraphitePlugin that times a http request
+Simple SqlToGraphitePlugin that gets wmi metrics from Performance sentry 

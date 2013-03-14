@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SqlToGraphitePlugin_PerfSentryWmi.UnitTests</RootNamespace>
-    <AssemblyName>SqlToGraphitePlugin-PerfSentryWmi.UnitTests</AssemblyName>
+    <AssemblyName>SqlToGraphitePlugin_PerfSentryWmi.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

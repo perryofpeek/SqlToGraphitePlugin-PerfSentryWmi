@@ -1,5 +1,5 @@
 properties {
-  $Build_Solution = 'SqlToGraphitePlugin-HttpPing.sln'
+  $Build_Solution = 'SqlToGraphitePlugin-PerfSentryWmi.sln'
   $Build_Configuration = 'Release'
   $Build_Artifacts = 'output'  
   $version = '0.0.0.1'
@@ -33,22 +33,21 @@ task Test {
 		$files = $files + " " + $file.Name
 	}
 	#write-host $files
-	#write-host " $openCover -target:$nunit -filter:+[SqlToGraphite*]* -register:user -mergebyhash -targetargs:$files /err=err.nunit.txt /noshadow /nologo /config=SqlToGraphite.UnitTests.dll.config"
+	#write-host " $openCover -target:$nunit -filter:+[SqlToGraphite*]* -register:user -mergebyhash -targetargs:$files /err=err.nunit.txt /noshadow /nologo /config=SqlToGraphitePlugin_PerfCentryWmi.UnitTests.dll.config"
 	#write-host  "unit test"
-	Exec { & $openCover "-target:$nunit" "-filter:-[.*test*]* +[SqlToGraphite*]* " -register:user -mergebyhash "-targetargs:$files /err=err.nunit.txt /noshadow /nologo /config=SqlToGraphite.UnitTests.dll.config" } 	
+	Exec { & $openCover "-target:$nunit" "-filter:-[.*test*]* +[SqlToGraphite*]* " -register:user -mergebyhash "-targetargs:$files /err=err.nunit.txt /noshadow /nologo /config=SqlToGraphitePlugin_PerfCentryWmi.UnitTests.dll.config" } 	
 	Exec { & $reportGenerator "-reports:results.xml" "-targetdir:..\report" "-verbosity:Error" "-reporttypes:Html;HtmlSummary;XmlSummary"}	
 	cd $pwd	
 }
 
 task Package {
-   # if ((Test-path -path $Build_Artifacts -pathtype container) -eq $false)
-   # {		
-#		mkdir $Build_Artifacts
-	#}
-	#
-	#Copy-item .\src\SqlToGraphiteInterfaces\output\SqlToGraphiteInterfaces.dll $Build_Artifacts\
-	#Copy-item SqlToGraphiteInterfaces.nuspec $Build_Artifacts\
-	#Exec { .\packages\NuGet.CommandLine.1.7.0\tools\NuGet.exe Pack -BasePath $Build_Artifacts -outputdirectory .}
+    if ((Test-path -path $Build_Artifacts -pathtype container) -eq $false)
+    {		
+		mkdir $Build_Artifacts
+	}
+	Copy-item .\src\SqlToGraphitePlugin-PerfSentryWmi\output\SqlToGraphitePlugin_PerfSentryWmi.dll $Build_Artifacts\	
+	Copy-item SqlToGraphitePlugin-PerfSentryWmi.nuspec $Build_Artifacts\
+	Exec { .\packages\NuGet.CommandLine.1.7.0\tools\NuGet.exe Pack -BasePath $Build_Artifacts -outputdirectory .}
 }
 
 task Compile {  
@@ -71,9 +70,9 @@ task Init {
 
 	$Company = "peek.org.uk";
 	$Description = "Graphite Service for collecting metrics";
-	$Product = "SqlToGraphite $version";
-	$Title = "SqlToGraphite $version";
-	$Copyright = "PerryOfPeek 2012";	
+	$Product = "SqlToGraphitePlugin-PerfSentryWmi $version";
+	$Title = "SqlToGraphitePlugin-PerfSentryWmi $version";
+	$Copyright = "PerryOfPeek 2013";	
 
 	$files = Get-ChildItem src\* -recurse | Where-Object {$_.Fullname.Contains("AssemblyInfo.cs")}
 	foreach ($file in $files)
