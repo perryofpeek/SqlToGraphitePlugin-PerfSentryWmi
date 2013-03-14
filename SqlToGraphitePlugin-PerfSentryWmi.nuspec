@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SqlToGraphitePlugin-PerfSentryWmi</id>
+    <version>0.0.1</version>
+    <authors>Owain Perry</authors>
+    <owners>Owain Perry</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
+    <projectUrl>https://github.com/perryofpeek/SqlToGraphitePlugin-PerfSentryWmi</projectUrl>  <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Contains SqlToGraphite Performance Sentry Wmi plugin</description>
+    <releaseNotes>none.</releaseNotes>
+    <copyright>Copyright PerryOfPeek 2013</copyright>
+    <tags>SqlToGraphite Graphite Performance Sentry Wmi Plugin</tags>
+    <dependencies>
+      <dependency id="log4net" version="2.0.0" />
+      <dependency id="SqlToGraphiteInterfaces" version="0.3.5" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="*.dll" target="lib\net40" />
+  </files>
+</package>
